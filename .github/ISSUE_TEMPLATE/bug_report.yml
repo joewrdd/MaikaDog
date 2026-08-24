@@ -1,0 +1,56 @@
+name: Bug report
+description: Something in the app misbehaves
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. If this is a security or privacy issue, please
+        use a [security advisory](https://github.com/joewrdd/MaikaDog/security/advisories/new)
+        instead of a public issue.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did she do, and what did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can I make it happen?
+      placeholder: |
+        1. Open the den
+        2. Flick her at the dock
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Maika version
+      description: Shown at the bottom of her dashboard (menu bar paw → Dashboard).
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "14.5"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: How did you install it?
+      options:
+        - The DMG from Releases
+        - Built from source
+    validations:
+      required: true

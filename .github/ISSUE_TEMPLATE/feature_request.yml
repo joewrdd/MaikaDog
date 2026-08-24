@@ -1,0 +1,25 @@
+name: Idea
+description: A fit, a room, a trick, or anything else she should do
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What should she do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would you want it?
+      description: What would it feel like to have this? What does it add to your day?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: original
+    attributes:
+      label: If this is new artwork
+      options:
+        - label: This is original, and not a recognizable character, logo, or trademark.

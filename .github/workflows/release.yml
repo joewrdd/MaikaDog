@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  dmg:
+    name: Build and attach the DMG
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.44.0
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build macos --release
+
+      - name: Package the DMG
+        run: ./make_dmg.sh
+
+      - name: Attach to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/Maika.dmg
+          generate_release_notes: true
+          body: |
+            Drag **Maika** into **Applications**.
+
+            This build is not signed with a paid Apple Developer ID, so macOS
+            will refuse it the first time. Open **System Settings → Privacy &
+            Security**, scroll to the bottom, and choose **Open Anyway**.
+            See the README for details.
